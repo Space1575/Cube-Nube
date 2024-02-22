@@ -1,5 +1,6 @@
 """ALL RIGHTS ARE PRESERVED BY AUTHOR RIGHTS
 NO COPING!!!"""
+"""MADE BY Batyr Nurmanov"""
 import time,pygame,random
 from sys import exit
 #importing modules
