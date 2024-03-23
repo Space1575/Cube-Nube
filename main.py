@@ -1,28 +1,30 @@
 """ALL RIGHTS ARE PRESERVED BY AUTHOR RIGHTS
-NO COPING!!!"""
-"""MADE BY Batyr Nurmanov"""
+NO COPING!!!
+ALL RIGHTS ARE BELONG TO BATYR NURMANOV"""
 import time,pygame,random
 from sys import exit
 #importing modules
 pygame.display.init()
 pygame.font.init()
+LOG = pygame.image.load('New Piskel.png')
+LOGO = pygame.transform.scale(LOG,(500,500))
+ICON = pygame.image.load('warthunder.png')
 f = pygame.font.SysFont('Botsmatic',100)
 font = pygame.font.SysFont('Botsmatic',110)
 FONT = pygame.font.SysFont("Helvetica",40)
 highscore = 0
 def setup():
-  global W, H, Y, X,UP, FPS, pipe_x, pipe_y, gap, width, height, scroll, score, ground, player, gravity, screen, Stop, vel_down, scrollbg, clock, pipesDOWN, pipesUP
+  global W, H, Y, X,UP, FPS, pipe_x, pipe_y, gap, width, height, scroll, score, ground, player, gravity, screen, Stop, vel_down, clock, pipesDOWN, pipesUP
   W, H = 500, 500
   Y = 100
   pipe_y, pipe_x = 100, W
   FPS = 60
   UP = -10
   X = 0
-  gap = 100
+  gap = 80
   width = 40
   height = H
   scroll = 3
-  scrollbg = scroll
   ground = pygame.Rect(0, H - 20, W, 20)
   gravity = 1
   score = 0
@@ -30,11 +32,12 @@ def setup():
   Stop = False
   player = pygame.Rect(50, Y, 20, 20)
   screen = pygame.display.set_mode((W, H))
+  pygame.display.set_icon(ICON)  
   #Assets,анау-мнау вообщем
   clock = pygame.time.Clock()
-  pygame.display.set_caption('FlappyBird')
+  pygame.display.set_caption('Cube-Nube')
   pipesUP = []
-  pipesDOWN = []
+  pipesDOWN = []  
 def time_between_pipes():
   global score, wait
   if score >= 0 and score < 5:
@@ -52,22 +55,21 @@ def reset():
   main()
 def game_over():
   screen.fill((0, 200, 245))
+  screen.blit(LOGO,(0,0))
   Restart_shadow = FONT.render('PRESS SPACE TO RESTART', True, ('WHITE'))
   screen.blit(Restart_shadow, (28, 123))
   Restart = FONT.render('PRESS SPACE TO RESTART', True, ('BLACK'))
   screen.blit(Restart, (25, 120))
   Game_OVER = font.render(f'GAME OVER', True, (0, 0, 0))
-  screen.blit(Game_OVER, (20, 26))
+  screen.blit(Game_OVER, (20, 6))
   Game = font.render(f'GAME OVER', True, (200, 100, 0))
-  screen.blit(Game, (15, 20))
+  screen.blit(Game, (15, 0))
   Game_shadow = FONT.render(f'Highscore:  {highscore}', True, (0, 0, 0))
-  screen.blit(Game_shadow, (3, 224))
+  screen.blit(Game_shadow, (3,224))
   Highscore_text = FONT.render(f'Highscore:  {highscore}', True, (255, 255, 255))
   screen.blit(Highscore_text, (0, 220))
-   
   pygame.display.update()
-  on = True
-  while on:
+  while  True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
           pygame.quit()
@@ -76,7 +78,6 @@ def game_over():
             if event.key == pygame.K_SPACE:
                 reset()
                 break
-  
 def creating_Upper_pipes():
   global pipesUP, pipeUP
   pipeUP = pygame.Rect(pipe_x, pipe_y - height, width, height)
@@ -166,6 +167,8 @@ def main():
         pygame.draw.rect(screen, (0, 200, 50), ground)
         pygame.draw.rect(screen, (253,239,105), player)
         pygame.draw.rect(screen,(200,0,0),(pygame.Rect(player.x+12,player.y+2,4,4)))
+        screen.blit(text_shadow, (W // 2 - 100, 2))
+        screen.blit(text, (W // 2 - 100, 10))
         pygame.display.update()
         pygame.time.delay(1200)
         if highscore < score:
