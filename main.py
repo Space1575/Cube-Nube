@@ -4,14 +4,18 @@ ALL RIGHTS ARE BELONG TO Space1575"""
 import time,pygame,random
 from sys import exit
 #importing modules
-pygame.display.init()
+W, H = 500, 500
+pygame.display.init( )
 pygame.font.init()
 LOG = pygame.image.load('New Piskel.png')
+screen = pygame.display.set_mode((W, H))
 LOGO = pygame.transform.scale(LOG,(500,500))
 ICON = pygame.image.load('costume2.png')
 f = pygame.font.SysFont('Botsmatic',100)
 font = pygame.font.SysFont('Botsmatic',110)
 FONT = pygame.font.SysFont("Helvetica",40)
+pygame.display.set_caption("Cube-Nube")
+pygame.display.set_icon(ICON)
 highscore = 0
 def setup():
   global W, H, Y, X,UP, FPS, pipe_x, pipe_y, gap, width, height, scroll, score, ground, player, gravity, screen, Stop, vel_down, clock, pipesDOWN, pipesUP
@@ -31,11 +35,8 @@ def setup():
   vel_down = 0
   Stop = False
   player = pygame.Rect(50, Y, 20, 20)
-  screen = pygame.display.set_mode((W, H))
-  pygame.display.set_icon(ICON)  
   #Assets,анау-мнау вообщем
   clock = pygame.time.Clock()
-  pygame.display.set_caption('Cube-Nube')
   pipesUP = []
   pipesDOWN = []  
 def time_between_pipes():
