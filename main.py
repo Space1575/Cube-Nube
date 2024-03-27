@@ -1,6 +1,6 @@
 """ALL RIGHTS ARE PRESERVED BY AUTHOR RIGHTS
 NO COPING!!!
-ALL RIGHTS ARE BELONG TO BATYR NURMANOV"""
+ALL RIGHTS ARE BELONG TO Space1575"""
 import time,pygame,random
 from sys import exit
 #importing modules
